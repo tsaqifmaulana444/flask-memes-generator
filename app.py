@@ -9,11 +9,12 @@ def get_meme():
     response = json.loads(requests.request("GET", url).text)
     meme_large = response["preview"][-2]
     subreddit = response["subreddit"]
-    return meme_large, subreddit
+    title = response["title"]
+    return meme_large, subreddit, title
 
 @app.route("/")
 async def index():
-    meme_pic, subreddit = get_meme()
-    return render_template("index.html", meme_pic = meme_pic, subreddit = subreddit)
+    meme_pic, subreddit, title = get_meme()
+    return render_template("index.html", meme_pic = meme_pic, subreddit = subreddit, title = title)
 
 app.run(host="0.0.0.0")
