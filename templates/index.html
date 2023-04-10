@@ -1,18 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
-</head>
-<body>
-    <img src="{{ meme_pic }}" alt="">
-    <p>Current Subreddit = r/{{ subreddit }}</p>
-    <h1 class="text-blue-600">title  = {{ title }}</h1>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dist/css/output.css')}}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-[Kanit] bg-[#454545]">
+    <div id="special">
+      <div class="w-fit mx-auto py-[4vh] text-[#FFE6C7]">
+        <h1 class="text-4xl">Reddit Meme Generator</h1>
+      </div>
+      <div class="w-fit mx-auto">
+        <img src="{{ meme_pic }}" alt="memes" class="" />
+      </div>
+      <div class="w-[110vh] mx-auto text-xl py-[5vh] text-[#FFE6C7]">
+        <h1 class="font-bold">About This Post</h1>
+        <p>Current Subreddit : r/{{ subreddit }}</p>
+        <h1 class="">title : {{ title }}</h1>
+        <p>Author : {{ author }}</p>
+        <p class="">
+          Post Link :
+          <a href="{{ postLink }}" class="text-blue-600" target="_blank"
+            >{{ postLink }}</a
+          >
+        </p>
+        <p class="">
+          Post Link (For Indonesian!):
+          <button
+            onclick="link()"
+            class="text-blue-600 cursor-pointer"
+            target="_blank"
+          >
+            {{ postLink }}
+          </button>
+        </p>
+      </div>
+    </div>
+    <div id="special2" class="w-fit mx-auto mt-12" style="display: none">
+      <div class="w-fit mx-auto">
+        <img
+          src="{{ url_for('static', filename='images/images.jpeg') }}"
+          alt="memes"
+          class=""
+        />
+      </div>
+      <div class="w-fit mx-auto py-[4vh] text-[#FFE6C7]">
+        <h1 class="text-6xl">Emang Indo bisa buka reddit?</h1>
+      </div>
+    </div>
+    <div class="w-fit mx-auto my-[1.5vh]">
+      <button
+        type="button"
+        class="focus:outline-none text-lg text-[#FFE6C7] hover:bg-[#FFA559] bg-[#FF6000] font-medium rounded-lg px-5 py-2.5 mx-auto w-[28vw]"
+        onclick="generate()"
+      >
+        Refresh
+      </button>
+    </div>
 
-</body>
+    <script>
+      function generate() {
+        location.reload();
+      }
+
+      function link() {
+        disp1 = document.getElementById("special");
+        disp2 = document.getElementById("special2");
+        disp1.style.display = "none";
+        disp2.style.display = "block";
+      }
+    </script>
+  </body>
 </html>
 
 <!-- npx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch -->
