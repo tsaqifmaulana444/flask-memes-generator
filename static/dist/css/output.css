@@ -554,6 +554,11 @@ video {
   margin-bottom: 3.5vh;
 }
 
+.my-\[4vh\] {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
